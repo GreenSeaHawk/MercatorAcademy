@@ -175,5 +175,21 @@ object MonCodeAlong extends App {
   println(oneStringIntBackToString)
   println(oneStringIntBackToString.getClass)
 
+  //RESEARCH
+  //1
+//  val new: String = "new string"
+  //illegal start of simple pattern
+  // because new is a reserved term used to make new entities of a class
 
+  //2
+  //You can use backticks to tell the compiler that you know you are using a reserved word
+  //but you want to use it anyway. For example: val `new`: String = "new string"
+  val `new`: String = "new string"
+  println(`new`) // "new string"
+
+  //3
+  //I think a case class gives you more of a ready to go template. From research case class
+  //is mutable whereas class is immutable. Case class also comes with some built-in methods
+  //things like toString, equals and copy. I think it will become clearer when to use which
+  //once we start creating more classes throughout the course.
 }

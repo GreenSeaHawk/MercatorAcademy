@@ -120,23 +120,60 @@ object MonCodeAlong extends App {
   def squareNumber(num: Int): Int = {
     num * num
   }
+  print("3) ")
   println(squareNumber(3)) //9
 
   //TASK 4
   def isItOdd(num: Int): Boolean = {
     (num % 2) == 1
   }
+  print("4) ")
   println(isItOdd(3)) //true
   println(isItOdd(8)) //false
 
   //TASK 5
+  print("5) ")
   class Book(val title: String, val pages: Int, val genre: String, val isFiction: Boolean) {
-    val fictionStatus: String = {
-
-    }
+    val fictionString: String = if (isFiction) "Fiction" else "Non-Fiction"
     def description: String = {
-      s"$title is a $"
+      s"$title is a $fictionString book that is $pages long and is of the $genre genre"
     }
   }
+  val narnia:Book = new Book(title="Narnia", pages=320, genre="fantasy", isFiction=true)
+  println(narnia.description)
+  val bible:Book = new Book(title="Bible", pages=3352, genre="religious", isFiction=false)
+  println(bible.description)
+
+  //EXTENSION
+  //1
+  val lowerString: String = "elephant"
+  val upperString: String = lowerString.toUpperCase
+  print("E1) ")
+  println(lowerString)
+  println(upperString)
+  //2
+  val capitaliseString: String = lowerString.capitalize
+  print("E2) ")
+  println(capitaliseString)
+  //3
+  //False because it will compare the Unicode values
+  print("E3) ")
+  println("STRING" == "string")
+  //4
+  //You might find a special library/function to do this but otherwise no
+  //5
+  //No but you can convert it to type string or vice versa as seen below
+  val oneString: String = "1"
+  val oneStringInt: Int = oneString.toInt
+  print("E5) ")
+  println(oneStringInt)
+  println(oneStringInt.getClass)
+  //6
+  //Yes and you can do it in reverse.
+  val oneStringIntBackToString: String = oneStringInt.toString
+  print("E6) ")
+  println(oneStringIntBackToString)
+  println(oneStringIntBackToString.getClass)
+
 
 }

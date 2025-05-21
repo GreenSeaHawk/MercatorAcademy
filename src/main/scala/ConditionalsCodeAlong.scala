@@ -107,6 +107,76 @@ object ConditionalsCodeAlong extends App {
     case error: NumberFormatException => println(s"$error was not a valid input")
   }
 
+  //AFTERNOON TASK
+  //MVP 1
+  //a
+  val watermelons: Int = 4
+  //b & c
+  watermelons match {
+    case watermelons if watermelons > 5 => println(s"$watermelons watermelons is too many to carry even with a bag")
+    case watermelons if watermelons >= 4  => println(s"$watermelons watermelons means you'll need a bag")
+    case watermelons if watermelons > 0 => println(s"Only $watermelons watermelon(s) so you don't need a bag")
+    case _ => println("Invalid number of watermelons")
+  }
+  //d
+  val hasBag: Boolean = false
+  //e
+  val cantBuy: String = "You can't buy this many watermelons"
+  val canBuy: String = "You can buy this many watermelons"
 
+  if (watermelons > 5) {
+    println(cantBuy)
+  } else if (watermelons > 3 && hasBag) {
+    println(canBuy)
+  } else if (watermelons > 3 && !hasBag) {
+    println(cantBuy)
+  } else if (watermelons > 0) {
+    println(canBuy)
+  } else {
+    println("Invalid input")
+  }
+
+  //MVP 2
+  try {
+    val milesTravelled: String = "-5"
+    val milesTravelledInt: Int = milesTravelled.toInt
+    val amountPaidBack: Double = milesTravelled.toInt * 0.45
+    if (milesTravelledInt < 0) {
+      throw new IllegalArgumentException("Distance travelled cannot be negative")
+    }
+    println(s"£$amountPaidBack")
+  } catch {
+      case error: NumberFormatException => println(s"$error was not a valid input")
+      case error: IllegalArgumentException => println(error.getMessage)
+  }
+
+  //EXTENSION
+  //E1
+  //https://www.geeksforgeeks.org/operators-precedence-in-scala/
+  //Bodmas is followed then after that
+  //Relationals (<, <=, >=, >)
+  //After this we have Relational is equal to/not equal to (==, !=)
+  //Followed by &&
+  //Then ||
+  //For the ones mentioned it reads left to right if there are multiple operators of the same
+  //value. So if there was == and != on the same line it would be whichever is on the left first.
+  //Note: for some operators the reverse is true (right to left)
+
+  //E2
+  //true
+  println(true || false && false)
+  //E3
+  //false
+  println((true || false) && false)
+  //E4
+  //true
+  println(1 < 4 && 7 != 10 || 9 + 10 == 21)
+
+  //RESEARCH
+  val int1: Int = 3
+  val int2: Int = 2
+  val message: String = if (int2 > int1) "yes" else "no"
+  println(message)
 
 }
+

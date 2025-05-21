@@ -185,6 +185,9 @@ object CollectionsCodeAlong extends App {
   val uniqueSubmittersList: List[String] = uniqueSubmittersSet.toList
   println(uniqueSubmittersSet)
   println("List on unique submitters: " + uniqueSubmittersList)
+  //Could have done it differently syntax wise:
+  //eg val allUnique: Set[String] = day1Set union day2Set
+  //can use diff and intersect in the same way
 
   //RESEARCH
   //1
@@ -206,4 +209,8 @@ object CollectionsCodeAlong extends App {
   //Could be dangerous if that key doesn't exist as it will throw an error but probably not
   //the error we are looking for
 
+  //NOTES
+  //For Q9 on MVP I should've converted to a sequence to get the indexes or used a ListMap
+  //Use immutable vals when possible, it's best practice and scala gets confused with mutable
+  //things.
 }

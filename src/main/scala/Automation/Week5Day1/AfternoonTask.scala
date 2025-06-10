@@ -5,7 +5,9 @@ import org.openqa.selenium.{By, Dimension, Point, WebDriver, WebElement}
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.support.ui.{ExpectedCondition, WebDriverWait}
 import org.openqa.selenium.JavascriptExecutor
+
 import java.time.Duration
+import java.util
 
 object AfternoonTask extends App {
 
@@ -88,6 +90,19 @@ object AfternoonTask extends App {
 //  myDynamicEvilTester.click()
 
   Thread.sleep(4000)
+
+  // Get window handles (open tabs)
+  val tabs = new java.util.ArrayList[String](driver.getWindowHandles())
+  println("There are " + tabs.size() + " tabs open!")
+  
+  // Switch to the new tab (index 1)
+  driver.switchTo().window(tabs.get(1))
+
+  Thread.sleep(2000)
+
+  driver.close()
+
+  Thread.sleep(2000)
 
   driver.quit()
 

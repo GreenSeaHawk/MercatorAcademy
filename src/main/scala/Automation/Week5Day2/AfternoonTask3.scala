@@ -16,6 +16,8 @@ object AfternoonTask3 extends App {
     firstName.sendKeys("Andrew")
   }
 
+  Thread.sleep(2000)
+
 //  Locate and select Hobbies checkbox if not already selected
 // So I'm actually clicking on the Sports text and not the checkbox
   val js = driver.asInstanceOf[JavascriptExecutor]
@@ -32,6 +34,7 @@ object AfternoonTask3 extends App {
   }
   println("The checkbox next to Sports is displayed? " + hobbiesCheckbox1.isDisplayed())
 
+  Thread.sleep(2000)
 
 //  Submit button
   val submit: WebElement = driver.findElement(By.xpath("//*[@id=\"submit\"]"))
@@ -43,6 +46,8 @@ object AfternoonTask3 extends App {
     //have been filled in
   }
 
+  Thread.sleep(2000)
+
   driver.quit()
   //  EXTENSION RESEARCH
 
@@ -50,12 +55,12 @@ object AfternoonTask3 extends App {
   //  functionalities, enabling you to perform actions like loading a URL, navigating
   //  forward and backward in the browser’s history, and refreshing the current page.
   //
-  //Unlike Driver.Get, which is primarily designed for loading new URLs, Driver.Navigate
-  // offers more versatile navigation capabilities, making it ideal for testing scenarios
-  // that require interacting with browser navigation states.
+  //  Unlike Driver.Get, which is primarily designed for loading new URLs, Driver.Navigate
+  //  offers more versatile navigation capabilities, making it ideal for testing scenarios
+  //  that require interacting with browser navigation states.
   //
-  //The key difference is that the navigate API retains cookies with each use. Unlike the
-  // get() method, which clears the session state every time it is called, the navigate()
-  // method preserves the session state.
+  //  The key difference is that the navigate API retains cookies with each use. Unlike the
+  //  get() method, which clears the session state every time it is called, the navigate()
+  //  method preserves the session state.
 
 }

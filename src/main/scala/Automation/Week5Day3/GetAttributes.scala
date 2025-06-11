@@ -3,7 +3,7 @@ package Automation.Week5Day3
 import org.openqa.selenium.{By, Dimension, JavascriptExecutor, Point, WebDriver, WebElement}
 import org.openqa.selenium.chrome.ChromeDriver
 
-object BrowserMethodsContinued extends App {
+object GetAttributes extends App {
 
   val driver: WebDriver = new ChromeDriver()
 //  driver.get("https://proleed.academy/exercises/selenium/selenium-element-id-locators-practice-form.php")

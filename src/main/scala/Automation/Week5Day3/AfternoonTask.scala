@@ -12,8 +12,13 @@ object AfternoonTask extends App {
   driver.get("https://testpages.herokuapp.com/styled/index.html")
   driver.manage().window().maximize()
   driver.findElement(By.linkText("HTML Form Example")).click()
+  val js = driver.asInstanceOf[JavascriptExecutor]
+
 
   Thread.sleep(2000)
+
+  driver.manage().window().setPosition(new Point(-1920, 0))
+  driver.manage().window().setSize(new Dimension(960, 1080))
 
   val username: WebElement = driver.findElement(By.cssSelector("#HTMLFormElements > table > tbody > tr:nth-child(1) > td > input[type=text]"))
   val password: WebElement = driver.findElement(By.cssSelector("#HTMLFormElements > table > tbody > tr:nth-child(2) > td > input[type=password]"))
@@ -41,34 +46,44 @@ object AfternoonTask extends App {
   Thread.sleep(2000)
 
   val submit: WebElement = driver.findElement(By.cssSelector("#HTMLFormElements > table > tbody > tr:nth-child(9) > td > input:nth-child(2)"))
+  js.executeScript("arguments[0].scrollIntoView();", submit)
   submit.click()
 
   Thread.sleep(2000)
 
-  driver.findElement(By.cssSelector("#back_to_form")).click()
+  val backToForm: WebElement = driver.findElement(By.cssSelector("#back_to_form"))
+  js.executeScript("arguments[0].scrollIntoView();", backToForm)
+  backToForm.click()
 
   Thread.sleep(2000)
 
 //  EXTENSION
-  driver.manage().window().setPosition(new Point(-1920, 0))
-  driver.manage().window().setSize(new Dimension(960, 1080))
+//  driver.manage().window().setPosition(new Point(-1920, 0))
+//  driver.manage().window().setSize(new Dimension(960, 1080))
   driver.navigate().to("https://www.tutorialspoint.com/selenium/practice/alerts.php")
+  println("Navigated to " + driver.getCurrentUrl)
 
   driver.findElement(By.cssSelector("body > main > div > div > div.col-md-8.col-lg-8.col-xl-8 > div:nth-child(2) > button")).click()
   driver.switchTo().alert().accept()
+  println("Alert accepted")
 
   Thread.sleep(2000)
 
   driver.findElement(By.cssSelector("body > main > div > div > div.col-md-8.col-lg-8.col-xl-8 > div:nth-child(4) > button")).click()
   driver.switchTo().alert().dismiss()
+  println("Alert dismissed")
+
+  Thread.sleep(2000)
 
   driver.findElement(By.cssSelector("body > main > div > div > div.col-md-8.col-lg-8.col-xl-8 > div:nth-child(5) > button")).click()
   driver.switchTo().alert().sendKeys("LOOK WHAT I WROTE!")
   driver.switchTo().alert().accept()
+  println("Text entered into prompt and then accepted")
 
   Thread.sleep(2000)
 
   driver.navigate().to("https://www.w3schools.com/html/tryit.asp?filename=tryhtml_iframe")
+  println("Navigated to " + driver.getCurrentUrl)
   val acceptAllButton: WebElement = driver.findElement(By.id("accept-choices"))
   acceptAllButton.click()
   val allFrames: java.util.List[WebElement] = driver.findElements(By.tagName("iframe"))
@@ -78,14 +93,32 @@ object AfternoonTask extends App {
   }
 
   driver.switchTo().frame("iframeResult")
-  val jsExecutor = driver.asInstanceOf[JavascriptExecutor]
-  val currentFrame = jsExecutor.executeScript("return self.name").toString
+  val currentFrame = js.executeScript("return self.name").toString
   println(s"Current frame name: $currentFrame")
 
   println("Text displayed in the iframe:")
   println(driver.findElement(By.cssSelector("body > p")).getText)
 
   Thread.sleep(2000)
+
+  driver.navigate().to("https://www.tutorialspoint.com/selenium/practice/nestedframes.php")
+  println("Navigated to " + driver.getCurrentUrl)
+
+
+//  Find all the frames in the webpage
+  val allFrames2: java.util.List[WebElement] = driver.findElements(By.tagName("iframe"))
+  println("There are " + allFrames2.size() + " frames on the webpage. These are listed below:")
+  for (frame <- allFrames2.asScala) {
+    println(frame.getAttribute("name"))
+  }
+//  Switch to frame1
+  driver.switchTo().frame("frame1")
+  val allFrames3: java.util.List[WebElement] = driver.findElements(By.tagName("iframe"))
+  println("There are " + allFrames3.size() + " frames within frame1. These are listed below:")
+  for (frame <- allFrames3.asScala) {
+    println(frame.getAttribute("name"))
+  }
+
 
   driver.quit()
 

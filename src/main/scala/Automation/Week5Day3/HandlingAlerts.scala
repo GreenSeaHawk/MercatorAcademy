@@ -11,6 +11,7 @@ object HandlingAlerts extends App {
   driver.manage().window().setPosition(new Point(-1920, 0))
   driver.manage().window().setSize(new Dimension(960, 1080))
 
+
   val jsAlertButton: WebElement = driver.findElement(By.cssSelector("#content > div > ul > li:nth-child(1) > button"))
   jsAlertButton.click() // Clicks the button that produces an alert
 

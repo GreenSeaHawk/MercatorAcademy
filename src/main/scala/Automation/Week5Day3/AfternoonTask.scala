@@ -57,9 +57,9 @@ object AfternoonTask extends App {
 
   Thread.sleep(2000)
 
-//  EXTENSION
-//  driver.manage().window().setPosition(new Point(-1920, 0))
-//  driver.manage().window().setSize(new Dimension(960, 1080))
+  //  EXTENSION
+  //  driver.manage().window().setPosition(new Point(-1920, 0))
+  //  driver.manage().window().setSize(new Dimension(960, 1080))
   driver.navigate().to("https://www.tutorialspoint.com/selenium/practice/alerts.php")
   println("Navigated to " + driver.getCurrentUrl)
 
@@ -105,13 +105,13 @@ object AfternoonTask extends App {
   println("Navigated to " + driver.getCurrentUrl)
 
 
-//  Find all the frames in the webpage
+  //  Find all the frames in the webpage
   val allFrames2: java.util.List[WebElement] = driver.findElements(By.tagName("iframe"))
   println("There are " + allFrames2.size() + " frames on the webpage. These are listed below:")
   for (frame <- allFrames2.asScala) {
     println(frame.getAttribute("name"))
   }
-//  Switch to frame1
+  //  Switch to frame1
   driver.switchTo().frame("frame1")
   val allFrames3: java.util.List[WebElement] = driver.findElements(By.tagName("iframe"))
   println("There are " + allFrames3.size() + " frames within frame1. These are listed below:")
@@ -122,50 +122,50 @@ object AfternoonTask extends App {
 
   driver.quit()
 
-//  RESEARCH
-//  1/ File upload/download
-//  You would do something like this to upload:
-//  val uploadElement = driver.findElement(By.id("file-upload"))
-//  uploadElement.sendKeys("/path/to/your/file.txt")
-//  To download something you need to configure your WebDriver to have a path to a download
-//  directory. Then you just click on the "download file" button and it should work.
-//  https://www.pixelqa.com/blog/post/handling-file-uploads-and-downloads-in-selenium-java-with-autoit-and-robot-class#1
+  //  RESEARCH
+  //  1/ File upload/download
+  //  You would do something like this to upload:
+  //  val uploadElement = driver.findElement(By.id("file-upload"))
+  //  uploadElement.sendKeys("/path/to/your/file.txt")
+  //  To download something you need to configure your WebDriver to have a path to a download
+  //  directory. Then you just click on the "download file" button and it should work.
+  //  https://www.pixelqa.com/blog/post/handling-file-uploads-and-downloads-in-selenium-java-with-autoit-and-robot-class#1
 
-//  2/ Scrolling
-//  Already done this in previous scripts but something like this:
-//  val js = driver.asInstanceOf[JavascriptExecutor]
-//  val element = driver.findElement(By.id("footer"))
-//  js.executeScript("arguments[0].scrollIntoView(true);", element) element comes into view
-//  js.executeScript("window.scrollTo(0, document.body.scrollHeight);") scroll to the bottom
+  //  2/ Scrolling
+  //  Already done this in previous scripts but something like this:
+  //  val js = driver.asInstanceOf[JavascriptExecutor]
+  //  val element = driver.findElement(By.id("footer"))
+  //  js.executeScript("arguments[0].scrollIntoView(true);", element) element comes into view
+  //  js.executeScript("window.scrollTo(0, document.body.scrollHeight);") scroll to the bottom
 
-//  3/ Dynamic dropdown
-//  This is when what appears in a dropdown isn't hard-coded into the HTML. For example,
-//  a search bar. It might take a while for the elements to appear in the dropdown menu
-//  and thus into the DOM. So implementing a wait is a good idea:
-//  val wait = new WebDriverWait(driver, Duration.ofSeconds(10))
-//  val option = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[text()='Desired Option']")))
-//  option.click()
+  //  3/ Dynamic dropdown
+  //  This is when what appears in a dropdown isn't hard-coded into the HTML. For example,
+  //  a search bar. It might take a while for the elements to appear in the dropdown menu
+  //  and thus into the DOM. So implementing a wait is a good idea:
+  //  val wait = new WebDriverWait(driver, Duration.ofSeconds(10))
+  //  val option = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[text()='Desired Option']")))
+  //  option.click()
 
-//  4/ Shadow DOM
-//  A shadow DOM is a special part of the DOM that's encapsulated from the main document.
-//  Elements inside it cannot be accessed with normal Selenium selectors.
-//  Might look something like this:
-//  <custom-element>
-//    #shadow-root (open)
-//    <div id="inside-shadow">Hello</div>
-//  </custom-element>
-//  To deal with this you need to use the JavascriptExecutor, something like this:
-//  // Step 1: Find the shadow host
-//  val shadowHost: WebElement = driver.findElement(By.cssSelector("custom-element"))
-//
-//  // Step 2: Access the shadow root via JavaScript
-//  val jsExecutor = driver.asInstanceOf[JavascriptExecutor]
-//  val shadowRoot = jsExecutor.executeScript("return arguments[0].shadowRoot", shadowHost).asInstanceOf[WebElement]
-//
-//  // Step 3: Find element inside the shadow DOM
-//  val insideShadow: WebElement = shadowRoot.findElement(By.cssSelector("#inside-shadow"))
-//
-//  // Step 4: Do something with the element
-//  println("Text inside shadow DOM: " + insideShadow.getText)
+  //  4/ Shadow DOM
+  //  A shadow DOM is a special part of the DOM that's encapsulated from the main document.
+  //  Elements inside it cannot be accessed with normal Selenium selectors.
+  //  Might look something like this:
+  //  <custom-element>
+  //    #shadow-root (open)
+  //    <div id="inside-shadow">Hello</div>
+  //  </custom-element>
+  //  To deal with this you need to use the JavascriptExecutor, something like this:
+  //  // Step 1: Find the shadow host
+  //  val shadowHost: WebElement = driver.findElement(By.cssSelector("custom-element"))
+  //
+  //  // Step 2: Access the shadow root via JavaScript
+  //  val jsExecutor = driver.asInstanceOf[JavascriptExecutor]
+  //  val shadowRoot = jsExecutor.executeScript("return arguments[0].shadowRoot", shadowHost).asInstanceOf[WebElement]
+  //
+  //  // Step 3: Find element inside the shadow DOM
+  //  val insideShadow: WebElement = shadowRoot.findElement(By.cssSelector("#inside-shadow"))
+  //
+  //  // Step 4: Do something with the element
+  //  println("Text inside shadow DOM: " + insideShadow.getText)
 
 }

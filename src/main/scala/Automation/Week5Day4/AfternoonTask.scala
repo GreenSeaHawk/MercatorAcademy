@@ -131,8 +131,6 @@ object AfternoonTask extends App {
   //  Assert that French is a listed language
   assert(allLanguages.contains("French"))
 
-
   driver.quit()
-
 
 }

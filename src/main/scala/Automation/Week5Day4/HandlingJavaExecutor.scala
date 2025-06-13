@@ -18,7 +18,7 @@ object HandlingJavaExecutor extends App {
   driver.get("https://proleed.academy/exercises/selenium/selenium-element-id-locators-practice-form.php")
   driver.manage().window().setPosition(new Point(-1920, 0))
   driver.manage().window().setSize(new Dimension(960, 1080))
-//  driver.manage().window().maximize()
+  //  driver.manage().window().maximize()
 
   //  Finding and typing in email
   val emailAddress: WebElement = driver.findElement(By.id("email"))
@@ -34,7 +34,7 @@ object HandlingJavaExecutor extends App {
   val login: WebElement = driver.findElement(By.id("login"))
   js.executeScript("arguments[0].scrollIntoView();", login)
   js.executeScript("arguments[0].click();", login)
-//  login.click() // not working on this webpage
+  //  login.click() // not working on this webpage
 
   val header: WebElement = driver.findElement(By.tagName("h2"))
   assert(header.getText == "Thank You!")

@@ -42,6 +42,8 @@ object AfternoonTask extends App {
   //  Print this nicely:
   println(s"German Capital: ${colGermany.get(2).getText}, German Currency: ${colGermany.get(3).getText}")
 
+  Thread.sleep(2000)
+
   //  Static Table Handling
   //  So by using the > 1 in the xpath below it takes all the rows that match that
   //  In this case all but the header row

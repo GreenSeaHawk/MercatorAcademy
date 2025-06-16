@@ -49,6 +49,7 @@ object AfternoonTask extends App {
   //  In this case all but the header row
   val rows: java.util.List[WebElement] = driver.findElements(By.xpath("//*[@id=\"countries\"]/tbody/tr[position() > 1]"))
 
+
   //  Example of what happens if you print the first row:
   //  println(rows.get(0).getText) // Afghanistan Kabul Afghani Dari Persian; Pashto
 

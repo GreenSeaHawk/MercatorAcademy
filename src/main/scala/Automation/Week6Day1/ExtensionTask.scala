@@ -92,5 +92,42 @@ object ExtensionTask extends App {
 
   //  RESEARCH
 
+  //  Pagination
 
+  //  How can Selenium be used to test data consistency across paginated tables (e.g.,
+  //  validating that items are not duplicated or skipped across pages)?
+  //  You can create a list/set of data and when switching pages you can check that this
+  //  information isn't duplicated by finding out if the new data you just scraped is in
+  //  the list/set already collated.
+
+  //  What are some best practices for writing scalable Selenium tests that verify pagination
+  //  works correctly even when the dataset size changes over time?
+  //  Best practice:
+  //  - Use dynamic waits
+  //  - Don't hardcode table sizes
+  //  - Test edge cases like first and last page
+
+  //  Dynamic Tables
+
+  //  What are the main challenges in locating and verifying content in dynamic tables that
+  //  are updated via JavaScript/AJAX?
+  //  There could be timing issues with loading of tables/rows
+  //  A table could update without reloading the page
+
+  //  How can you ensure stability in element locators when working with dynamic tables that
+  //  re-render DOM elements frequently?
+  //  Use explicit waits and expected conditions to make sure the content has loaded
+  //  Use stable selectors instead of xpath
+  //  Re-fetch elements after each interaction
+
+  //  Dynamic Dropdown Lists
+
+  //  What are effective strategies to handle dropdowns whose options are loaded
+  //  asynchronously based on user input (e.g., country → city)?
+  //  Use actions to hover over an element or click something to expose what we want
+
+  //  How does the use of Select2, Chosen, or other JavaScript-powered dropdown libraries
+  //  affect test implementation in Selenium?
+  //  They often hide the native select and use div-based UI.
+  //  So you need to use strategies that don't rely on that.
 }

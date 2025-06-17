@@ -28,12 +28,12 @@ object AfternoonTask extends App {
     val timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date())
     // Take a screenshot
     val screenshotFile = driver.asInstanceOf[TakesScreenshot].getScreenshotAs(OutputType.FILE)
-    // Create a destination based on input strings and timestamp
-    val destination = new File(s"${basePath}/${prefix}_${timeStamp}.png")
+    // Build a full path based on input strings and timestamp
+    val fullPath = s"${basePath}/${prefix}_${timeStamp}.png"
     // Save the screenshot to the destination
-    FileHandler.copy(screenshotFile, destination)
+    FileHandler.copy(screenshotFile, new File(fullPath))
     // Print out where the screenshot has been saved locally
-    println(s"Screenshot saved to: ${destination.getAbsolutePath}")
+    println(s"Screenshot saved to: $fullPath")
   }
 
   try {
@@ -53,6 +53,7 @@ object AfternoonTask extends App {
     val logout: WebElement = explicitWait.until(
       ExpectedConditions.elementToBeClickable(By.linkText("Logout"))
     ) // Happy path
+
     // Get it to fail based on fake id
     //    val falseID: WebElement = explicitWait.until(
     //      ExpectedConditions.visibilityOfElementLocated(By.id("This id doesn't appear on the page"))
@@ -80,7 +81,9 @@ object AfternoonTask extends App {
 
   }
   finally {
-    driver.quit()
-    println("driver quit successfully")
+    if (driver != null) {
+      driver.quit()
+      println("driver quit successfully")
+    }
   }
 }

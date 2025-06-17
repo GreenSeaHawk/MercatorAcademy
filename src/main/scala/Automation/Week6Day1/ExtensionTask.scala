@@ -27,7 +27,7 @@ object ExtensionTask extends App {
   // Imported from AfternoonTask
   takeScreenshot(driver, basePath = pathToFolder, prefix = "FullPage")
 
-  //  Set up util to capture an element
+  //  Set up util to capture an element and not the full screen
   def captureElement(
                       element: WebElement,
                       basePath: String = pathToFolder,
